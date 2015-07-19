@@ -1,5 +1,3 @@
-== README
-
 # Examlpe using prepend_view_path in before_action
 
 ubuntu 14.04
@@ -12,17 +10,17 @@ RAILS_ENV=production rake db:migrate
 ## Run
 
 run 2 instance aplication:
- bundle exec unicorn_rails -E production -p 3000
- bundle exec unicorn_rails -E production -p 3300
+ bundle exec unicorn_rails -E production -p 3000 
+ bundle exec unicorn_rails -E production -p 3300 
 
 
 ## Test
 
-Simple render:
- ab -n 50000 http://localhost:3000/
+Simple render: 
+ ab -n 50000 http://localhost:3000/ 
 
-Render using prepend_view_path in before_action:
- ab -n 50000 http://localhost:3300/?mobile=true
+Render using prepend_view_path in before_action: 
+ ab -n 50000 http://localhost:3300/?mobile=true 
 
 
 ## Results
@@ -103,7 +101,10 @@ Percentage of the requests served within a certain time (ms)
 
 ````
 
-                VIRT   RES
-5358  8.1  0.9 190328 76640  pts/8    Sl+  00:04   3:40 unicorn_rails worker[0] -E production -p 3000
-5367 17.7  2.7 333608 219908 pts/7    Sl+  00:04   8:00 unicorn_rails worker[0] -E production -p 3300
 
+````
+                VIRT   RES
+ 5358  8.1  0.9 190328 76640  pts/8    Sl+  00:04   3:40 unicorn_rails worker[0] -E production -p 3000
+ 5367 17.7  2.7 333608 219908 pts/7    Sl+  00:04   8:00 unicorn_rails worker[0] -E production -p 3300
+
+````
