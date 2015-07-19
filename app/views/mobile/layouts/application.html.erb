@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ViewTemplateLeakApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="mobile">
+
+<h1> Mobile layout</h1>
+
+<div>
+  <%= link_to 'To main', root_path(:mobile=>false) %>
+</div>
+
+<hr/>
+
+<%= yield %>
+
+</body>
+</html>
