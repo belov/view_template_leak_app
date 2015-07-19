@@ -1,25 +1,31 @@
 # Examlpe using prepend_view_path in before_action
 
 ubuntu 14.04
+
 ruby 2.2.2
 
 ## Setup
 bundle
+
 RAILS_ENV=production rake db:migrate
 
 ## Run
 
 run 2 instance aplication:
+
  bundle exec unicorn_rails -E production -p 3000 
+ 
  bundle exec unicorn_rails -E production -p 3300 
 
 
 ## Test
 
 Simple render: 
+
  ab -n 50000 http://localhost:3000/ 
 
 Render using prepend_view_path in before_action: 
+
  ab -n 50000 http://localhost:3300/?mobile=true 
 
 
