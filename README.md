@@ -114,3 +114,74 @@ Percentage of the requests served within a certain time (ms)
  5367 17.7  2.7 333608 219908 pts/7    Sl+  00:04   8:00 unicorn_rails worker[0] -E production -p 3300
 
 ````
+
+## Long test results
+
+run app:
+
+bundle exec unicorn_rails -E production -p 3300 
+
+run ab:
+
+````
+ab -n 50000000 http://localhost:3300/?mobile=true 
+This is ApacheBench, Version 2.3 <$Revision: 1528965 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+^C
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3300
+
+Document Path:          /?mobile=true
+Document Length:        960 bytes
+
+Concurrency Level:      1
+Time taken for tests:   15717.540 seconds
+Complete requests:      1653794
+Failed requests:        0
+Total transferred:      2819718770 bytes
+HTML transferred:       1587642240 bytes
+Requests per second:    105.22 [#/sec] (mean)
+Time per request:       9.504 [ms] (mean)
+Time per request:       9.504 [ms] (mean, across all concurrent requests)
+Transfer rate:          175.19 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       6
+Processing:     6    9  16.5      8    1303
+Waiting:        2    9  16.4      7    1303
+Total:          6    9  16.5      8    1303
+
+Percentage of the requests served within a certain time (ms)                                                                                                                                            
+  50%      8                                                                                                                                                                                            
+  66%      8                                                                                                                                                                                            
+  75%      9                                                                                                                                                                                            
+  80%     10                                                                                                                                                                                            
+  90%     12                                                                                                                                                                                            
+  95%     14                                                                                                                                                                                            
+  98%     16                                                                                                                                                                                            
+  99%     18
+ 100%   1303 (longest request)
+
+````
+run by cron command:
+
+````
+* * * * *  ps -axo rss,vsz,pid,args | grep unicorn | grep master | grep -v ps >> ~/mem_log_master
+````
+
+### Results in files
+* mem_log_worker
+* mem_log_master
+
+### Chart:
+
+mem_log_worker.ods
+
+![GitHub Logo](https://github.com/belov/view_template_leak_app/blob/master/mem_log_worker.png)
+
