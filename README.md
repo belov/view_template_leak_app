@@ -1,6 +1,6 @@
 # Examlpe using prepend_view_path in before_action
 
-ubuntu 14.04
+ubuntu 14.04.
 
 ruby 2.2.2
 
