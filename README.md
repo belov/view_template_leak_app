@@ -185,4 +185,4 @@ mem_log_worker.ods
 
 ![GitHub Logo](https://github.com/belov/view_template_leak_app/blob/master/mem_log_worker.png)
 
-[//]: # (20200527123136)
+[//]: # (20200527123136)[//]: # (20200527123808)
